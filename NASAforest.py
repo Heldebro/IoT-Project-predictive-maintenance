@@ -57,7 +57,7 @@ df["pred_label"] = np.where(df["pred_proba"] > threshold, 1, 0)
 
 # Getting the latest cycle of each engine
 # Added and ofsett so we can look at earlier cycles than the last one and get a more interesting result
-ofsett = 30 # Amount of cyles before the last one. 
+ofsett = 50 # Amount of cyles before the last one. 
 latest = (df.sort_values("current_cycle")).groupby("unit_number").tail(1)
 latest_wofsett = (df.sort_values("current_cycle").groupby("unit_number")).nth(-ofsett)
 # Creating engine at risk
@@ -67,7 +67,8 @@ plt.figure(figsize=(15, 5))
 
 colors = np.where(latest_wofsett["pred_label"] == 1, "red", "green")
 
-latest_wofsett_sorted = latest_wofsett.sort_values("unit_number")
+#latest_wofsett_sorted = latest_wofsett.sort_values("unit_number")
+latest_wofsett_sorted = (df.sort_values("unit_numbers"))
 
 plt.bar(latest_wofsett_sorted["unit_number"].astype(str), latest_wofsett_sorted["pred_proba"], color=colors)
 plt.xticks(rotation=90)
@@ -77,5 +78,7 @@ plt.title("Predicted risk per engine")
 plt.tight_layout()
 
 plt.show()
+
+# Om MQTT ska användas kan det vara bättre att skapa en lista på de mest akuta motorerna och skicka det istället. Blir svårt med en bild
 
 # %%
