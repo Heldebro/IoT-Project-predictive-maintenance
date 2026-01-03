@@ -12,10 +12,7 @@ from sklearn.metrics import classification_report
 
 # Loading and labling data
 def load_cmapss_train(filepath: str):
-    """
-    Reads CMAPSS FD001 training file (space-separated, no header).
-    Adds column names and returns df + list of feature columns.
-    """
+
     df = pd.read_csv(filepath, header=None, sep=r"\s+")
 
     cols = (["unit_number", "current_cycle"] + [f"operation_setting_{i}" for i in range(1, 4)] + [f"sensor_{i}" for i in range(1, 22)])
@@ -32,12 +29,7 @@ def load_cmapss_train(filepath: str):
 
 
 def add_rul_and_label(df: pd.DataFrame, rul_threshold: int = 30): # number of cycles before failure is the threashold for "dangerzone"
-    """
-    Adds:
-      - max_cycle per unit
-      - RUL = max_cycle - current_cycle
-      - Failure_risk = 1 if RUL <= rul_threshold else 0
-    """
+
     df = df.copy()
     df["max_cycle"] = df.groupby("unit_number")["current_cycle"].transform("max") # Adding max_cycles for each engine
     df["RUL"] = df["max_cycle"] - df["current_cycle"] #Remaing usefull life for each engine
