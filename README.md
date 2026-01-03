@@ -10,4 +10,4 @@ After top 5 engines the following is added:
 * just_failed[] List of just failed engines during this tick t. 
 
 ex. 
-{'unit_number': 8, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139},{'unit_number': 9, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139}, 'failed': [], 'just_failed': []}
+{'unit_number': 8, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139},{'unit_number': 9, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139}, 'failed': [58, 39, 47], 'just_failed': [23]}
