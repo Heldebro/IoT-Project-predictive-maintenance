@@ -36,7 +36,6 @@ def add_rul_and_label(df: pd.DataFrame, rul_threshold: int = 30): # number of cy
     df["Failure_risk"] = (df["RUL"] <= rul_threshold).astype(int) #Compares RUL with rul_threshold int
     return df
 
-
 #Splitting the data to X and y
 def train_rf_classifier(df: pd.DataFrame, feature_cols):
 
