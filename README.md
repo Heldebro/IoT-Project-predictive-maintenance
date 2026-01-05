@@ -11,3 +11,6 @@ After top 5 engines the following is added:
 
 ex. 
 {'unit_number': 8, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139},{'unit_number': 9, 'cycle': 11, 'pred_proba': 0.32, 'rul': 139}, 'failed': [58, 39, 47], 'just_failed': [23]}
+
+Data used is the CMAPS Jet engine simulated data, used the train_FD001.txt file in this. 
+Link to dataset: https://www.kaggle.com/datasets/palbha/cmapss-jet-engine-simulated-data 
